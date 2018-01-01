@@ -11,30 +11,24 @@ app.get("/", function (request, response) {
   response.render("index");
 });
 
-app.get("/:timestamp", function (request, response) {
-  var today = new Date(request.params.timestamp);
+app.get("/new/:address", function (request, response) {
+  var address = request.params.address;
   
-  if (!isNaN(request.params.timestamp)) {
-    response.send(
-      {
-        "unix" : Number(request.params.timestamp),
-        "natural" : new Date(request.params.timestamp*1000).toDateString()
-      }    
-    )
-  } else if (!isNaN(today)) {
-    response.send(
-      {
-        "unix" : today.getTime() / 1000,
-        "natural" : request.params.timestamp
-      }    
-    )
+  if (!isNaN(address)) {
+    
   } else {
-    response.send(
-      {
-        "unix" : null,
-        "natural" : null
-      }    
-    )
+    
+  }
+  
+});
+
+app.get("/:short", function (request, response) {
+  var short = request.params.short;
+  
+  if (!isNaN(short)) {
+    
+  } else {
+    
   }
   
 });
